@@ -50,7 +50,7 @@ genders <- factor(c("Female", "Male"))
 10000
 
 **How many different ethnicities are in our population?**
-6
+8
 
 ```{r}
 demographics <- tibble(
