@@ -1,6 +1,7 @@
 ---
 title: "Potential Outcomes"
 output: html_notebook
+author: "Robert On"
 ---
 
 This notebook explains the [Potential Outcomes Framework](https://en.wikipedia.org/wiki/Rubin_causal_model) and estimation of Causal Effects, in particular the [Average Treatment Effect](https://en.wikipedia.org/wiki/Average_treatment_effect) and related estimators: the [Intent-to-Treat Effect](https://en.wikipedia.org/wiki/Intention-to-treat_analysis) and the [Complier Average Causal Effect](https://en.wikipedia.org/wiki/Local_average_treatment_effect) (also known as the Local Average Treatment Effect).
@@ -79,6 +80,18 @@ population %>%
 population %>%
   ggplot(aes(gender, fill = gender)) +
   geom_bar()
+
+population %>%
+  group_by(gender) %>%
+  summarise(across(income, mean)) %>%
+  ggplot(aes(gender, income, fill = gender)) +
+  geom_col()
+
+population %>%
+  group_by(ethnicity) %>%
+  summarise(across(income, mean)) %>%
+  ggplot(aes(ethnicity, income, fill = ethnicity)) +
+  geom_col()
 
 population %>%
   ggplot(aes(income, fill = ethnicity, lty = gender)) +
@@ -347,7 +360,7 @@ simulation_results %>%
 
 ## A coding walkthrough
 
-Maybe this all makes sense to you but the coding is still hard to fully understand. That's understandable! Coding is like any language, it takes a long time to learn, practice and understand. Let's walk through the code that generated the tables from teh Full Compliance section above: \@ref(tab:full-compliance).
+Maybe this all makes sense to you but the coding is still hard to fully understand. That's understandable! Coding is like any language, it takes a long time to learn, practice and understand. Let's walk through the code that generated the tables from the [Full Compliance](https://ond3.com/potential_outcomes.nb.html#full-compliance) section above.
 
 ```
 population %>%
