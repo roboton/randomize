@@ -45,10 +45,13 @@ genders <- factor(c("Female", "Male"))
 ```
 
 **How many people have we defined to be in our population?**
+1000000
 
 **What is their expected base income?**
+10000
 
 **How many different ethnicities are in our population?**
+8
 
 ```{r}
 demographics <- tibble(
